@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block header %}
+    <script src="{% static "js/snake.js" %}" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="{%  static "css/snake.css" %}">
+{% endblock %}
+
+
+
+{% block content %}
+    <h2 class="page-header">Let's Play Snake</h2>
+    <div class="buttons">
+        <button id="startGame">Start Game</button><br><br>
+        <div id="level">Select your level:
+            <button id="slow">Slow</button><button id="med">Med</button><button id="fast">Fast</button>
+        </div>
+    </div> <br>
+    <center>
+        <canvas id="canvas" width="400" height="400"></canvas>
+    </center>
+    <br>
+{% endblock %}
