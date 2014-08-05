@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2 class="page-header">Leaderboard</h2>
+    <div class="col-lg-6 col-lg-offset-3">
+        {% for score in top_scores %}
+            <strong>Player: {{ score.player }} </strong><br>
+            <em>Game: {{ score.game }} / Score: {{ score }}</em><br><br>
+        {% endfor %}
+    </div>
+
+{% endblock %}

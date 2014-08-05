@@ -16,7 +16,7 @@ $(document).ready(function () {
     var currentDirection;
     var food;
     var score;
-    var high_score = 0;
+    var high_score;
     var highScoreText;
 
     function gameLoop() {
@@ -156,6 +156,20 @@ $(document).ready(function () {
         clearInterval(gameLoopInterval);
         $('#level').toggle();
         $('#startGame').text("Bummer you lost. Play Again");
+        data = {score: score, game: 'snake'};
+
+        $.ajax({
+            url: "/add_score/",
+            type: "POST",
+            dataType: "html",
+            data: JSON.stringify(data),
+            success: function(response){
+                console.log(response);
+            },
+            error: function(response){
+                console.log(response);
+            }
+        });
     }
 
     function startGame(speed) {
@@ -168,6 +182,19 @@ $(document).ready(function () {
         // Create the initial food, set score = 0
         createFood();
         score = 0;
+
+        $.ajax({
+            url: "/highest_score/",
+            type: "GET",
+            dataType: "json",
+            success: function(response){
+                high_score = response['high_score'];
+            },
+            error: function(response){
+                console.log(response);
+            }
+        });
+
     }
 
     // Let's set up the arrow keys for our game

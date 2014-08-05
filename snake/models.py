@@ -16,7 +16,11 @@ class Player(AbstractUser):
 
 
 class Score(models.Model):
-    value = models.ForeignKey(Player, related_name='score')
+    score = models.IntegerField()
+    player = models.ForeignKey(Player, related_name='scores')
     GAMES = (('SNAKE', 'SNAKE'), ('MEMORY GAME', 'MEMORY GAME'))
     game = models.CharField(max_length=20, choices=GAMES)
     created = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return u"{}".format(self.score)

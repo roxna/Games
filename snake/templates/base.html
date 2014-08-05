@@ -31,9 +31,12 @@
             <h1 id="page-header">Welcome to the GameZone</h1>
             <div class="row">
                 <nav class="navbar navbar-default" role="navigation" id="menu-bar">
+                    <a class="navbar-brand" href="{% url "home" %}">Home</a>
                     <a class="navbar-brand" href="{% url "memory_game" %}">Memory Game</a>
                     <a class="navbar-brand" href="{% url "snake" %}">Snake</a>
+                    <a class="navbar-brand" href="{% url "leaderboard" %}">Leaderboard</a>
                     {% if user.is_authenticated %}
+                        <a class="navbar-brand" href="{% url "profile" %}">Profile</a>
                         <a class="navbar-brand" href="{% url "logout" %}">Log Out</a>
                     {% else %}
                         <a class="navbar-brand" href="{% url "login" %}">Log In</a>
